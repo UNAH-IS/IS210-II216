@@ -1,0 +1,20 @@
+package clases;
+
+public class Cast {
+	public static void main(String[] args) {
+		float a = 10.5f;
+		int b;
+		int c = 15;
+		float d;
+		byte f = 122;
+		long g = 1002032342;
+		b = (int)a; //Cast o conversión de de tipos
+		d = (float)c;
+
+		System.out.println("Valor: "+b);//El valor mostrado sera 10
+		System.out.println("Valor: "+d);//El valor mostrado sera 10
+
+		char e = (char)f;
+		System.out.println("Valor Char: "+e);
+	}
+}
