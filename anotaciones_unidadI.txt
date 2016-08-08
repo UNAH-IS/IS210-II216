@@ -1,0 +1,12 @@
+Pilares Programacion Orientada a Objetos
+*Abstracción
+  Es la funcionalidad que permite al usuario/desarrollador abstraerse de la composicion o estructura de una clase, es decir que no necesariamente sepa como esta estructurada una clase internamente simplemente se utiliza.
+  El proceso de abstracción consiste en definir atributos y metodos de una clase para ponerlos a disposicion de nuevos usuarios/desarrolladores.
+
+*Encapsulación
+  Proteger los atributos o metodos de una clase con la finalidad de evitar modificaciones erroneas o no intencionales.
+  Modificadores de acceso:
+  
+
+*Herencia
+*Polimorfismo
