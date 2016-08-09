@@ -5,8 +5,27 @@ Pilares Programacion Orientada a Objetos
 
 *Encapsulación
   Proteger los atributos o metodos de una clase con la finalidad de evitar modificaciones erroneas o no intencionales.
+  La encapsulacion se logra definiendo los atributos como privados y creando metodos publicos para acceder o asignar sus valores, por estandar estos metodos se conocen como sets y gets.
+
   Modificadores de acceso:
-  
+  -public: Permite el acceso a una clase, atributo o metodo desde cualquier lugar del proyecto.
+  -default: Modificador de acceso por defecto, es el que no se escribe, es similar a public, la unica diferencia es que los atributos/metodos con este modificador no son visibles desde otros paquetes.
+  -protected: -> Herencia
+  -private: Permite el acceso de un atributo o metodo unicamente desde la misma clase o desde metodos propios de la clase.
+
+
 
 *Herencia
 *Polimorfismo
+
+
+
+Constructores:
+-Son metodos especiales que usualmente se utilizan para inicializar un objeto.
+Caracteristicas:
+  *Es el primer metodo en ejecutarse al momento de instanciar una clase.
+  *Obligatoriamente debe ser public.
+  *Debe llevar exactamente el mismo nombre de la clase.
+  *No tiene tipo de dato de retorno, inclusive void.
+  *Si no se define un constructor Java creara uno vacio por defecto.
+  *Puede llevar o no parametros
