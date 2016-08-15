@@ -1,5 +1,14 @@
 package clases;
 
+/*
+ * POJO: Plain Old Java Object, Java Bean
+ * -Es una clase con sus atributos encapsulados, es decir con
+ * modificador private y metodos sets y gets.
+ * -Que tenga un constructor para inicializar los atributos de la clase.
+ * -Un constructor vacio
+ * -El metodo toString()
+ *
+ * */
 public class Telefono {
 	private String marca;
 	private String color;
@@ -13,8 +22,7 @@ public class Telefono {
 	private String telefono;
 	private String imei;
 
-	public Telefono(
-			String marca,
+	public Telefono(String marca,
 			String color,
 			String modelo,
 			int capacidadMemoriaBytes,
@@ -24,7 +32,7 @@ public class Telefono {
 			String resolucion,
 			String sistemaOperativo,
 			String telefono,
-			String imei){
+			String imei) {
 		this.marca = marca;
 		this.color = color;
 		this.modelo = modelo;
@@ -36,7 +44,15 @@ public class Telefono {
 		this.sistemaOperativo = sistemaOperativo;
 		this.telefono = telefono;
 		this.imei = imei;
-		System.out.println("Se ejecuto el constructor de la clase Telefono");
+	}
+
+	public Telefono(){
+	}
+
+	public Telefono(String marca){
+		this.marca = marca;
+		this.color = "Blanco";
+		this.sistemaOperativo = "Android";
 	}
 
 	public String getMarca() {
@@ -107,13 +123,15 @@ public class Telefono {
 	}
 
 	//Se suele definir un metodo toString que retorna toda la informacion concatenada.
-	public String toString(){
+/*	public String toString(){
 		return marca +"\t"+ color + "\t"+ modelo + "\t"+
 				capacidadMemoriaBytes + "\t"+
 				capacidadDiscoBytes+"\t"+capacidadProcesadorHertz +"\t"+
 				tamanioPantalla + "\t"+ resolucion+ "\t"+ sistemaOperativo + "\t"+
 				telefono +"\t"+ imei;
 	}
+*/
+
 
 
 
@@ -121,6 +139,22 @@ public class Telefono {
 		//System.out.println(color);
 		System.out.println("Llamando...");
 	}
+
+	public String toString() {
+		return "Telefono [marca=" + marca + ", color=" + color + ", modelo=" + modelo + ", capacidadMemoriaBytes="
+				+ capacidadMemoriaBytes + ", capacidadDiscoBytes=" + capacidadDiscoBytes + ", capacidadProcesadorHertz="
+				+ capacidadProcesadorHertz + ", tamanioPantalla=" + tamanioPantalla + ", resolucion=" + resolucion
+				+ ", sistemaOperativo=" + sistemaOperativo + ", telefono=" + telefono + ", imei=" + imei + "]";
+	}
+
+	public void llamar(String telefonoDestino){
+		System.out.println("Llamando a " + telefonoDestino);
+	}
+
+	public void llamar(int telefonoDestino){
+		System.out.println("Llamando a " + telefonoDestino);
+	}
+
 	public void colgar(){
 		System.out.println("Colgando...");
 	}

@@ -1,0 +1,14 @@
+package implementacion;
+
+import clases.Producto;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		Producto productos[];
+
+		//Solicitar la cantidad de productos
+		productos = new Producto[5];
+	}
+
+}

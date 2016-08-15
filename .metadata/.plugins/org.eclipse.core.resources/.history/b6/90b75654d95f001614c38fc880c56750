@@ -1,0 +1,24 @@
+package implementacion;
+
+import java.util.Scanner;
+
+import clases.Producto;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		//Declaracion de variables/objetos locales
+		Producto productos[];
+		Scanner entrada = new Scanner(System.in);
+		int cantidadProductos;
+
+		System.out.println("/¿Cuantos productos desea agregar?");
+		cantidadProductos = entrada.nextInt();
+
+		//Solicitar la cantidad de productos
+		productos = new Producto[cantidadProductos];
+
+		System.out.println("Tamaño del arreglo"+productos.length);
+	}
+
+}

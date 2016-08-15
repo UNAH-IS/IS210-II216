@@ -1,0 +1,12 @@
+package clases;
+
+public class Producto {
+	private int codigoProducto;
+	private String nombreProducto;
+	private String marca;
+	private double precio;
+	private double descuento;
+	private double impuesto;
+
+
+}

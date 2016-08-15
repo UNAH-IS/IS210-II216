@@ -18,7 +18,12 @@ Pilares Programacion Orientada a Objetos
 *Herencia
 *Polimorfismo
 
-
+Clase POJO o Java Bean: Plain Old Java Object
+  -Es una clase con sus atributos encapsulados, es decir con
+  modificador private y metodos sets y gets.
+  -Que tenga un constructor para inicializar los atributos de la clase.
+  -Un constructor vacio
+  -El metodo toString()
 
 Constructores:
 -Son metodos especiales que usualmente se utilizan para inicializar un objeto.
@@ -28,4 +33,26 @@ Caracteristicas:
   *Debe llevar exactamente el mismo nombre de la clase.
   *No tiene tipo de dato de retorno, inclusive void.
   *Si no se define un constructor Java creara uno vacio por defecto.
-  *Puede llevar o no parametros
+  *Puede llevar o no parametros.
+  *Un constructor puede sobrecargarse
+
+
+Sobrecarga de Metodos:
+-Es definir o crear metodos con el mismo nombre pero que difieren por la cantidad o tipos de parametros.
+
+
+Colecciones:
+Son clases especiales que permiten gestionar multiples objetos, suelen ser muy similares a los arreglos convencionales.
+
+Ejemplos:
+*ArrayList
+*HashMap
+*HashTable
+*LinkedList
+*Vector
+*ObservableList
+
+RawType (Receptáculo): es un tipo de dato referenciado que se suele indicar en ciertas clases al momento de declararlas e instanciarlas, por ejemplo en las colecciones. Los rawtypes deben ir entre los simbolos <> y en medio el nombre de la clase.
+Ejemplo:
+  <NombreClase>
+  <String>

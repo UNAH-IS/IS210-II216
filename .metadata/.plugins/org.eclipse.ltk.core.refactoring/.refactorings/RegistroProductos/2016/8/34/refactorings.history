@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 packages to &apos;RegistroProductosArrayList/src&apos;&#x0D;&#x0A;- Original project: &apos;RegistroProductos&apos;&#x0D;&#x0A;- Destination element: &apos;RegistroProductosArrayList/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     RegistroProductos/src/implementacion&#x0D;&#x0A;     RegistroProductos/src/clases" description="Copy packages" destination="=RegistroProductosArrayList/src" element1="/src&lt;implementacion" element2="/src&lt;clases" flags="589830" fragments="2" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1471274691936" version="1.0"/>
+</session>

@@ -1,0 +1,13 @@
+package implementacion;
+
+import java.util.Scanner;
+
+import clases.Producto;
+
+public class Principal {
+
+	public static void main(String[] args) {
+
+	}
+
+}
