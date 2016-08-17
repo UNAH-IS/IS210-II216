@@ -7,6 +7,8 @@ public class EjemploClaseMath{
 		int potencia;
 		Scanner entrada;
 		entrada = new Scanner(System.in);
+		System.out.println("Pi: " + Math.PI);
+		System.out.println("e: "+ Math.E);
 		System.out.println("Que operacion desea realizar?");
 		System.out.println("1 Potencia de un numero");
 		System.out.println("2 Valor absoluto");
@@ -16,6 +18,7 @@ public class EjemploClaseMath{
 		do{
 			System.out.print("----------------\nOpcion: ");
 			opcion = entrada.nextInt();
+
 			switch (opcion){
 				case 1:
 					System.out.print("Valor: ");
@@ -31,7 +34,7 @@ public class EjemploClaseMath{
 				break;
 				case 3:
 					System.out.print("Valor: ");
-					valor = entrada.nextDouble(); 
+					valor = entrada.nextDouble();
 					System.out.println("Raiz Cuadrada: "+Math.sqrt(valor));
 				break;
 				case 4:
