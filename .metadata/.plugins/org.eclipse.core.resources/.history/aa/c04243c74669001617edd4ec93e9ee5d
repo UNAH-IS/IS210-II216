@@ -1,0 +1,14 @@
+package clases;
+
+public class EjemploWrappers {
+
+	public static void main(String[] args) {
+		int a = 5;
+		Integer b = new Integer("9");
+
+		System.out.println("a: " + a);
+		System.out.println("b: " + b.toString());
+
+	}
+
+}

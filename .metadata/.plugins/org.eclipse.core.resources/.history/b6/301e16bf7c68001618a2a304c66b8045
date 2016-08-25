@@ -1,0 +1,30 @@
+package implementacion;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import clases.Empleado;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+		Scanner entrada = new Scanner(System.in);
+
+		int opcion = 0;
+
+		do{
+			System.out.println(
+					"0 Salir\n"
+					+ "1 Agregar empleado\n"
+					+ "2 Modificar empleado\n"
+					+ "3 Eliminar empleado\n"
+					+ "4 Mostrar información"
+			);
+			opcion = entrada.nextInt();
+		}while(opcion!=0);
+
+		System.out.println("Finalizo el programa");
+	}
+
+}

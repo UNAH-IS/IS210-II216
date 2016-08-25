@@ -1,0 +1,20 @@
+package clases;
+
+public class EjemploWrappers {
+
+	public static void main(String[] args) {
+		int a = 5;
+		Integer b = new Integer("9");
+
+		String nombre = "ElBrayan";
+		String apellido = new String("Perez");
+
+		System.out.println("a: " + a);
+		System.out.println("b: " + b);
+
+		System.out.println("nombre: "+ nombre);
+		System.out.println("apellido: "+ apellido);
+
+	}
+
+}

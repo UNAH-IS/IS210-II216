@@ -1,0 +1,16 @@
+package clases;
+
+import javax.swing.JOptionPane;
+
+public class EjemploJOptionPane {
+
+	public static void main(String[] args) {
+		//JOptionPane.showMessageDialog(null, "Hola mundo");
+		JOptionPane.showMessageDialog(null, "Mensaje de advertencia",
+				"Advertencia", JOptionPane.ERROR_MESSAGE);
+
+		String nombre = JOptionPane.showInputDialog("Introduzca su nombre:");
+		System.out.println("Nombre: " + nombre);
+	}
+
+}

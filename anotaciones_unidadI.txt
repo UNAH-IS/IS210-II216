@@ -56,3 +56,8 @@ RawType (Receptáculo): es un tipo de dato referenciado que se suele indicar en 
 Ejemplo:
   <NombreClase>
   <String>
+
+Modificador static:
+Los atributos o metodos con este modificador permiten que puedan ser accedidos a ellos sin necesidad de crear instancias u objetos. Por lo general son publicos.
+Un atributo static mantiene el mismo valor para todas las instancias.
+
