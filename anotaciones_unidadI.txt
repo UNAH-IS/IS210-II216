@@ -10,12 +10,23 @@ Pilares Programacion Orientada a Objetos
   Modificadores de acceso:
   -public: Permite el acceso a una clase, atributo o metodo desde cualquier lugar del proyecto.
   -default: Modificador de acceso por defecto, es el que no se escribe, es similar a public, la unica diferencia es que los atributos/metodos con este modificador no son visibles desde otros paquetes.
-  -protected: -> Herencia
+  -protected: Es similar al modificar private, con la diferencia que los atributos y metodos protected pueden ser visibles desde clases hijas.
   -private: Permite el acceso de un atributo o metodo unicamente desde la misma clase o desde metodos propios de la clase.
 
 
 
 *Herencia
+  Funcionalidad que permite crear una clase a partir de otra, de tal forma que esta nueva clase hereda los atributos y metodos de la clase base. Una de las principales ventajas de la herencia es la reutilizacion de codigo.
+  
+  Para aplicar herencia se utiliza extends(Java y PHP) despues del nombre de la clase hija y luego el nombre de la clase padre.
+  En java,PHP no se puede heredar de multiples clases.
+
+  Desde una clase hija, obligatoriamente se tiene que llamar al constructor de la clase padre, en caso de que la clase padre tenga un constructor vacio este se llamara automaticamente. Para hacer el llamado al constructor de la clase padre se utiliza la instruccion super. Tambien se puede utilizar super para llamar cualquier metodo o atributo de la clase padre.
+
+  Sobreescritura de metodos:
+  Funcionalidad que permite volver a escribir en la clase hija un metodo que estaba previamente definido en una clase padre, de tal forma que su funcionalidad puede ser completamente diferente. 
+
+
 *Polimorfismo
 
 Clase POJO o Java Bean: Plain Old Java Object
@@ -61,3 +72,6 @@ Modificador static:
 Los atributos o metodos con este modificador permiten que puedan ser accedidos a ellos sin necesidad de crear instancias u objetos. Por lo general son publicos.
 Un atributo static mantiene el mismo valor para todas las instancias.
 
+
+Composición
+Es utilizar en un atributo de una clase un tipo de dato previamente definido, es decir otra clase.

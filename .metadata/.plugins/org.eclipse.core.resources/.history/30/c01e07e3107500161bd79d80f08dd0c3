@@ -1,0 +1,9 @@
+package clases;
+
+public class Alumno extends Persona{
+	private String cuenta;
+
+	public void mostrarNombre(){
+		System.out.println(nombre);
+	}
+}

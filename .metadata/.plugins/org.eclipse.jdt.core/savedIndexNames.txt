@@ -1,14 +1,2 @@
 INDEX VERSION 1.127+F:\Teach UNAH\Programacion II\2016-II\Repositorio de Ejercicios\IS210-II216\.metadata\.plugins\org.eclipse.jdt.core
-3913303907.index
-2723136130.index
-372445906.index
-4100667926.index
-3247491508.index
-1600928066.index
-1259571028.index
-167817840.index
-4205949029.index
-1574206713.index
-2098693269.index
-2753729082.index
-3625756966.index
+713086900.index

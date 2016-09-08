@@ -1,0 +1,13 @@
+package clases;
+
+public class Archivo {
+	private String nombreArchivo;
+	private int tamanioBytes;
+	private Usuario usuario;
+
+
+	Usuarios Compartio[] de 5 elementos maximo
+	Nombre carpeta
+	Fecha modificacion
+	Fecha subida
+}

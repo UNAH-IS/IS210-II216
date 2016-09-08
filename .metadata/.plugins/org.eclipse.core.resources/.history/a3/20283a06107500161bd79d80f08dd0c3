@@ -1,0 +1,11 @@
+package implementacion;
+
+import clases.Alumno;
+import clases.Persona;
+
+public class Principal {
+	public static void main(String args[]){
+		Persona p = new Persona();
+		Alumno a = new Alumno();
+	}
+}

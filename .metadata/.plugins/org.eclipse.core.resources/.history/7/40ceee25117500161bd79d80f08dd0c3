@@ -1,0 +1,13 @@
+package clases;
+
+public class Alumno extends Persona{
+	private String cuenta;
+
+	public Alumno(String cuenta){
+		this.cuenta = cuenta;
+	}
+
+	public void mostrarNombre(){
+		System.out.println(nombre);
+	}
+}

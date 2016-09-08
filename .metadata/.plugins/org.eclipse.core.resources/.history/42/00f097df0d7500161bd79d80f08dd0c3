@@ -1,0 +1,19 @@
+package implementacion;
+
+import javax.swing.JOptionPane;
+
+import clases.Archivo;
+import clases.Usuario;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		Archivo archivo = new Archivo();
+		int cantidadUsuariosCompartir = Integer.parseInt(JOptionPane.showInputDialog("¿Con cuantos usuarios "
+				+ "compartira este archivo?"));
+
+		Usuario usuarios[] = new Usuario[cantidadUsuariosCompartir];
+
+	}
+
+}
