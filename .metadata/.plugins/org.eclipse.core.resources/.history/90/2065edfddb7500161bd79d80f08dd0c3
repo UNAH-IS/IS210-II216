@@ -1,0 +1,16 @@
+package clases;
+
+import javax.swing.JFrame;
+
+//awt
+//swing
+//javafx
+
+public class Formulario{
+	public Formulario(){
+
+	}
+	public static void main(String[] args) {
+		new Formulario();
+	}
+}

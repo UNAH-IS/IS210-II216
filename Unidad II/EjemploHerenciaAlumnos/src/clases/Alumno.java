@@ -30,7 +30,18 @@ public class Alumno extends Persona{
 
 	@Override
 	public void matricular(){
+		super.matricular();
 		System.out.println("Matriculando desde la clase alumno, "
 				+ "es una funcionalidad complemente nueva");
 	}
+
+	@Override
+	public String toString() {
+		return "Alumno [cuenta=" + cuenta + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad
+				+ ", genero=" + genero + ", carrera=" + carrera + ", centroRegional=" + centroRegional + ", identidad="
+				+ identidad + "]";
+	}
+
+
+
 }

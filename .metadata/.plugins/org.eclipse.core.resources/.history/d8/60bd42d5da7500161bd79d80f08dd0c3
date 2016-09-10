@@ -1,0 +1,17 @@
+package clases;
+
+public class Formulario {
+	int a=4;
+	public Formulario(){
+		//Logica del programa
+		a=5;
+		System.out.println("Valor: " + a);
+	}
+	public static void main(String[] args) {
+		new Formulario();
+	}
+
+	public int sumar(int a, int b){
+		return a+b;
+	}
+}

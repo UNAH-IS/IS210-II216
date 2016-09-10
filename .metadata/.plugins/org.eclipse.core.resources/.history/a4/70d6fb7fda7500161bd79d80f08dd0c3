@@ -1,0 +1,12 @@
+package clases;
+
+public class Formulario {
+	int a=4;
+	public Formulario(){
+		//Logica del programa
+		a=5;
+	}
+	public static void main(String[] args) {
+		Formulario f = new Formulario();
+	}
+}
