@@ -26,8 +26,40 @@ Pilares Programacion Orientada a Objetos
   Sobreescritura de metodos:
   Funcionalidad que permite volver a escribir en la clase hija un metodo que estaba previamente definido en una clase padre, de tal forma que su funcionalidad puede ser completamente diferente. 
 
+  Clases abstractas (no tiene mucho que ver con abstracción):
+  Es una clase que se utiliza como molde o estructara base para ser utilizada en herencia
 
-*Polimorfismo
+  abstract: Resumen
+  Caracteristicas:
+  *Usualmente se utiliza para clases padre.
+  *Se utiliza la palabra reservada abstract para definir una clase como abstracta.
+  *No se puede instanciar, sin embargo pueden tener un constructor.
+  *Si se define un metodo abstracto la clase debe ser abstracta.
+  *Puede definirse una clase abstracta que no tenga ningun metodo abstracto.
+  *Si se define un metodo como abstract, este metodo no tiene cuerpo, solo se declara.
+  *Todo metodo abstracto se debe implementar(sobreescribirse) obligatoriamente en las clases hijas.
+
+
+
+Polimorfismo (Poli: Muchos, morfismo: formas)
+  Misma apariencia diferente forma o funcionalidad.
+
+  Sobreescritura de metodos: Es volver a escribir un metodo en la clase hija que previamente estaba definido en la clase padre, con la salvedad de que puede tener un comportamiento completamente diferente.
+  En Java se suele agregar la etiqueta @Override para indicar que se esta sobreescribiendo un metodo.
+
+  En Java y en PHP para identificar si un objeto es una instancia de una clase especifica se utiliza el operador logico instanceof
+
+  Java objeto instanceof Clase
+  PHP  $objeto instanceof Clase
+
+  Ejemplos de polimorfismo:
+    Sobreescritura de metodos
+    Sobrecarga de metodos.
+    Compatibilidad de clases:
+        -Cast entre clases padres e hijas
+        -Agregar elementos a una coleccion con un rawtype de una clase Padre
+    Java: Crear objetos de clases padres utilizando constructores de clases hijas, al final las instancias son del tipo de la clase hija.
+
 
 Clase POJO o Java Bean: Plain Old Java Object
   -Es una clase con sus atributos encapsulados, es decir con

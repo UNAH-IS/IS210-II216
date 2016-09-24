@@ -1,0 +1,16 @@
+package clases;
+
+import java.awt.Color;
+
+public class Cuadrado extends Rectangulo {
+
+	public Cuadrado(int coordenadaX, int coordenadaY, int ancho, int alto, Color color, double area) {
+		super(coordenadaX, coordenadaY, ancho, alto, color, area);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Cuadrado() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

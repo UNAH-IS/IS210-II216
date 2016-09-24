@@ -1,0 +1,22 @@
+package clases;
+
+import java.awt.Color;
+
+public class Ovalo extends Figura {
+
+	public Ovalo(int coordenadaX, int coordenadaY, int ancho, int alto, Color color, double area) {
+		super(coordenadaX, coordenadaY, ancho, alto, color, area);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Ovalo() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void dibujar() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

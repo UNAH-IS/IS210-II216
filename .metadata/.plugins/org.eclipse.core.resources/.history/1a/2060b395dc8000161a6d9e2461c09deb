@@ -1,0 +1,16 @@
+package clases;
+
+import java.awt.Color;
+
+public class Circulo extends Ovalo {
+
+	public Circulo(int coordenadaX, int coordenadaY, int ancho, int alto, Color color, double area) {
+		super(coordenadaX, coordenadaY, ancho, alto, color, area);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Circulo() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
