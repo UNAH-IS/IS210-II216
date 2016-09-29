@@ -1,6 +1,7 @@
 package clases;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Ovalo extends Figura {
 
@@ -11,7 +12,9 @@ public class Ovalo extends Figura {
 	public Ovalo() {}
 
 	@Override
-	public void dibujar() {
+	public void dibujar(Graphics g) {
+		g.setColor(color);
+		g.drawOval(coordenadaX, coordenadaY, ancho, alto);
 		System.out.println("Dibujar un ovalo");
 	}
 

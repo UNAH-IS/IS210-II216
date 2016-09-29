@@ -2,6 +2,8 @@ package clases;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -11,8 +13,10 @@ import javax.swing.JFrame;
 //swing
 //javafx
 
-public class Formulario extends JFrame{
+public class Formulario extends JFrame implements KeyListener{
+	private int coordenadaX=100;
 	public Formulario(){
+		addKeyListener(this);
 		setTitle("Super formulario");
 		setSize(500, 500);
 		/*Point p = new Point(200,20);
@@ -33,7 +37,7 @@ public class Formulario extends JFrame{
 			g.drawImage(
 					ImageIO.read(
 						getClass().getResource("/imagenes/mario.png")),
-						100, 267, this);
+						coordenadaX, 267, this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -42,5 +46,27 @@ public class Formulario extends JFrame{
 
 	public static void main(String[] args) {
 		new Formulario();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		if (arg0.getKeyCode() == KeyEvent.VK_RIGHT)
+			System.out.println("Se presiono la tecla espacio");
+		coordenadaX+=10;
+		repaint();
+		//System.out.println("Tecla presionada: "+arg0.getKeyCode());
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		if (arg0.getKeyCode() == KeyEvent.VK_RIGHT)
+			System.out.println("Se solto la tecla espacio");
+		//System.out.println("Tecla soltada: "+arg0.getKeyCode());
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 }

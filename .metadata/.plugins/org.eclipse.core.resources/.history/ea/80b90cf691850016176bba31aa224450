@@ -1,0 +1,29 @@
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.imageio.ImageIO;
+
+public class EjemploHashmap {
+	private ArrayList<String> cadenas;
+	private HashMap<String, String> pares;
+	private HashMap<String, BufferedImage> imagenes;
+
+	public EjemploHashmap(){
+		pares = new HashMap<String,String>();
+		imagenes = new HashMap<String,BufferedImage>();
+		pares.put("Elemento1", "Hola");
+		pares.put("Elemento2", "Mundo");
+		imagenes.put("carrito",
+				ImageIO.read(getClass().getResource("/recursos/auto.png")));
+
+		System.out.println(pares.get("Elemento1") + " " + pares.get("Elemento2"));
+		pares.remove("Elemento1");
+	}
+
+	public static void main(String[] args) {
+		//llave-valor
+		new EjemploHashmap();
+	}
+
+}

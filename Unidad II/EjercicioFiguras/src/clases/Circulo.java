@@ -1,6 +1,7 @@
 package clases;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Circulo extends Ovalo {
 
@@ -11,7 +12,8 @@ public class Circulo extends Ovalo {
 	public Circulo() {}
 
 	@Override
-	public void dibujar() {
+	public void dibujar(Graphics g) {
+		super.dibujar(g);
 		System.out.println("Dibujar un circulo");
 	}
 }

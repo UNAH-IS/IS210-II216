@@ -1,6 +1,7 @@
 package clases;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public abstract class Figura {
 	protected int coordenadaX;
@@ -79,5 +80,5 @@ public abstract class Figura {
 				+ alto + ", color=" + color + ", area=" + area + "]";
 	}
 
-	public abstract void dibujar();
+	public abstract void dibujar(Graphics g);
 }

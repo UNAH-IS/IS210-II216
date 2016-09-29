@@ -1,0 +1,18 @@
+package clases;
+
+import javax.swing.JFrame;
+
+public class Formulario {
+	private JFrame ventana;
+	public Formulario(){
+		ventana.setTitle("Juego");
+		ventana.setSize(500,500);
+		ventana.setLocationRelativeTo(null);
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana.setVisible(true);
+	}
+	public static void main(String[] args) {
+		new Formulario();
+	}
+
+}

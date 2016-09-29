@@ -1,6 +1,7 @@
 package clases;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Rectangulo extends Figura {
 
@@ -11,7 +12,9 @@ public class Rectangulo extends Figura {
 	public Rectangulo() {}
 
 	@Override
-	public void dibujar() {
+	public void dibujar(Graphics g) {
+		g.setColor(color);
+		g.drawRect(coordenadaX, coordenadaY, ancho, alto);
 		System.out.println("Dibujando rectangulo");
 	}
 

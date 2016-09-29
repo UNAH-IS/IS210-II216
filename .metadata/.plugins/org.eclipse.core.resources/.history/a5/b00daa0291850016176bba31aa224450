@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class EjemploHashmap {
+	private ArrayList<String> cadenas;
+	private HashMap<String, String> pares;
+
+	public EjemploHashmap(){
+		pares = new HashMap<String,String>();
+		pares.put("Elemento1", "Hola");
+		pares.put("Elemento2", "Mundo");
+	}
+
+	public static void main(String[] args) {
+		//llave-valor
+		new EjemploHashmap();
+	}
+
+}

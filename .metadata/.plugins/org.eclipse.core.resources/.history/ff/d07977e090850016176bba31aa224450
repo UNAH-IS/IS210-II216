@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class EjemploHashmap {
+	private ArrayList<String> cadenas;
+	private HashMap<String, String> pares;
+
+	public EjemploHashmap(){
+
+	}
+
+	public static void main(String[] args) {
+		//llave-valor
+		new EjemploHashmap();
+	}
+
+}
