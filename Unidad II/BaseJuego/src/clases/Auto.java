@@ -14,7 +14,9 @@ public class Auto {
 	private int anchoImagen;
 	private int altoImagen;
 	private String llaveImagen;
+	private int estadoVehiculo=0; //0: Vehiculo en velocidad normal, 1: Furioso
 
+	private int iteradorImagen=0;
 	public Auto(String nombreJugador, int x, int y, int velocidad, String llaveImagen) {
 		this.nombreJugador = nombreJugador;
 		this.x = x;
@@ -70,10 +72,34 @@ public class Auto {
 	}
 
 	public void mover(){
+		if(estadoVehiculo==0){
+			if (iteradorImagen>=5){
+				iteradorImagen=0;
+				this.llaveImagen="auto2";
+			}else{
+				this.llaveImagen="auto";
+			}
+		}
+		if(estadoVehiculo==1){
+			if (iteradorImagen>=5){
+				iteradorImagen=0;
+				this.llaveImagen="auto_rapido_furioso";
+			}else{
+				this.llaveImagen="auto_rapido_furioso2";
+			}
+		}
+		iteradorImagen++;
+		//System.out.println("Iterador Imagen:"+iteradorImagen);
 		if (x>Juego.ANCHO_VENTANA)
 			x=-200;
 		else
 			x+=velocidad;
+	}
+	public int getEstadoVehiculo() {
+		return estadoVehiculo;
+	}
+	public void setEstadoVehiculo(int estadoVehiculo) {
+		this.estadoVehiculo = estadoVehiculo;
 	}
 }
 

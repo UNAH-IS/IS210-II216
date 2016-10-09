@@ -8,18 +8,24 @@ import juego.Juego;
 
 public class Fondo {
 	private int x;
+	private int x2;
 	private int y;
 	private int velocidad;
 	private int anchoImagen;
 	private int altoImagen;
 	private String llaveImagen;
+	private String llaveImagen2;
 
 	private int contadorImagen = 0;
-	public Fondo(int x, int y, int velocidad, String llaveImagen) {
+	public Fondo(int x, int y, int velocidad, String llaveImagen, String llaveImagen2) {
 		this.x = x;
 		this.y = y;
 		this.velocidad = velocidad;
 		this.llaveImagen = llaveImagen;
+		this.llaveImagen2 = llaveImagen2;
+		anchoImagen = Juego.imagenes.get(llaveImagen).getWidth();
+		altoImagen = Juego.imagenes.get(llaveImagen).getHeight();
+		this.x2 = x+anchoImagen;
 	}
 
 	public int getX() {
@@ -59,11 +65,23 @@ public class Fondo {
 		this.llaveImagen = llaveImagen;
 	}
 
-	public void pintar(){
-
+	public void pintar(Graphics2D g2D, ImageObserver imgObs){
+		g2D.drawImage(Juego.imagenes.get(llaveImagen), x, y, imgObs);
+		g2D.drawImage(Juego.imagenes.get(llaveImagen2), x2, y, imgObs);
 	}
 
 	public void mover(){
 
+		x-=velocidad;
+		x2-=velocidad;
+
+		if (x<=-anchoImagen)
+			x=anchoImagen;
+
+		if (x2<=-anchoImagen)
+			x2=anchoImagen;
+
+		//else
+		//	x=0;
 	}
 }

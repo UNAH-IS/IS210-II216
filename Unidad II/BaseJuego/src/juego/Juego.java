@@ -29,7 +29,7 @@ public class Juego extends Canvas implements KeyListener{
 	int lastFpsTime; //Variable auxiliar para calculo de la pausa del ciclo principal
 	int fps; //Fotogramas por segundo
 
-	private HashMap<String,BufferedImage> imagenes = new HashMap<String,BufferedImage>();
+	public static HashMap<String,BufferedImage> imagenes = new HashMap<String,BufferedImage>();
 	private Auto auto; //Lo mejor es almacenar los objetos de juego en un ArrayList
 	private Fondo fondo;
 
@@ -55,21 +55,32 @@ public class Juego extends Canvas implements KeyListener{
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Terminar aplicacion cuando se de click en la X
 		ventana.setSize(ANCHO_VENTANA, ALTO_VENTANA); //Establecer las dimensiones de la ventana
 		ventana.setLocationRelativeTo(null); //Centrar ventana en el escritorio
+		//ventana.setResizable(false);
+		//Ventana en fullscreen
+		//ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//ventana.setUndecorated(true);
 		ventana.setTitle("Establezca el titulo de su conveniencia"); //Definir el titulo de la ventana
 		ventana.getContentPane().add(this); //Agregar el Canvas (lienzo) a la ventana
 		ventana.setVisible(true); //Mostrar ventana
 	}
 
 	public void inicializarObjetosJuego(){
-		auto = new Auto("Juan", 100,250,1,"auto");
+		auto = new Auto("Juan", 100,370,1,"auto");
+		fondo = new Fondo(0,0,2,"fondo1","fondo2");
 	}
 
 	//Cargar Imagenes
 	public void cargarImagenes(){
 		//Es mas conveniente almacenar las imagenes en un hashmap para poder darle un alias.
 		try {
-			imagenes.put("auto", ImageIO.read(getClass().getResource("/recursos/auto.png")));
-			imagenes.put("auto_rapido_furioso", ImageIO.read(getClass().getResource("/recursos/auto2.png")));
+			BufferedImage spritesAuto = ImageIO.read(getClass().getResource("/recursos/sprites_auto.png"));
+			imagenes.put("auto", spritesAuto.getSubimage(0, 0, 150, 43));
+			imagenes.put("auto2", spritesAuto.getSubimage(0, 43, 150, 43));
+			imagenes.put("auto_rapido_furioso", spritesAuto.getSubimage(150, 0, 150, 43));
+			imagenes.put("auto_rapido_furioso2", spritesAuto.getSubimage(150, 43, 150, 43));
+			imagenes.put("fondo1", ImageIO.read(getClass().getResource("/recursos/background1.png")));
+			imagenes.put("fondo2", ImageIO.read(getClass().getResource("/recursos/background2.png")));
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -79,10 +90,10 @@ public class Juego extends Canvas implements KeyListener{
 	//Metodo para pintar los componentes del juego
 	private void pintar(){
         g2D = (Graphics2D)dobleBuffer.getDrawGraphics(); //Obtener la instancia de Graphics para pintar los elementos
-
+        fondo.pintar(g2D, this);
         //Puede borrar las siguientes 4 lineas
         g2D.setColor(new Color(0,0,0)); //Definir el color negro en el contexto
-        g2D.fillRect(0, 0, ANCHO_VENTANA, ALTO_VENTANA); //Dibujar un rectangulo
+        //g2D.fillRect(0, 0, ANCHO_VENTANA, ALTO_VENTANA); //Dibujar un rectangulo
         g2D.setColor(Color.WHITE); //Definir el color blanco en el contexto
         g2D.drawString("Nombre Jugador: " + auto.getNombreJugador(),30,30); //Dibujar un string
 
@@ -96,6 +107,7 @@ public class Juego extends Canvas implements KeyListener{
 	public void actualizar(){
 		//Agregue aqui el codigo necesario para actualizar los componentes de juego y construir la logica del juego
 		auto.mover();
+		fondo.mover();
 	}
 
 	public void cicloPrincipal(){
@@ -134,7 +146,9 @@ public class Juego extends Canvas implements KeyListener{
         switch(e.getKeyCode()){
         	case KeyEvent.VK_SPACE:
         		auto.setVelocidad(5);
-        		auto.setLlaveImagen("auto_rapido_furioso");
+        		fondo.setVelocidad(4);
+        		auto.setEstadoVehiculo(1);
+        		//auto.setLlaveImagen("auto_rapido_furioso");
         		System.out.println("Se presiono la tecla espacio");
         		break;
         }
@@ -145,7 +159,9 @@ public class Juego extends Canvas implements KeyListener{
         switch(e.getKeyCode()){
         case KeyEvent.VK_SPACE:
         	auto.setVelocidad(1);
-        	auto.setLlaveImagen("auto");
+        	fondo.setVelocidad(2);
+        	auto.setEstadoVehiculo(0);
+        	//auto.setLlaveImagen("auto");
     		System.out.println("Se solto la tecla espacio");
     		break;
         }
