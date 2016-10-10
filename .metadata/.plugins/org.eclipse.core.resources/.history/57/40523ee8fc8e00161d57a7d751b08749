@@ -1,0 +1,12 @@
+package clases;
+
+public class Formulario {
+	public Formulario(){
+
+	}
+
+	public static void main(String[] args) {
+		new Formulario();
+	}
+
+}

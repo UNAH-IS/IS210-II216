@@ -1,0 +1,33 @@
+package clases;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class Formulario {
+	private JFrame formulario;
+	private JLabel lblNombre;
+	public Formulario(){
+		inicializarFormulario();
+		inicializarComponentes();
+
+		formulario.setVisible(true);
+	}
+
+	public void inicializarFormulario(){
+		formulario = new JFrame("Registro alumnos");
+		formulario.setSize(500,400);
+		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		formulario.setLocationRelativeTo(null);
+	}
+
+	public void inicializarComponentes(){
+		lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(30, 50, 100, 30);
+		formulario.add(lblNombre);
+	}
+
+	public static void main(String[] args) {
+		new Formulario();
+	}
+
+}

@@ -1,0 +1,23 @@
+package clases;
+
+import javax.swing.JFrame;
+
+public class Formulario {
+	private JFrame formulario;
+	public Formulario(){
+
+	}
+
+	public void inicializarFormulario(){
+		formulario = new JFrame("Registro alumnos");
+		formulario.setSize(500,400);
+		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		formulario.setLocationRelativeTo(null);
+		formulario.setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		new Formulario();
+	}
+
+}

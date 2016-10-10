@@ -1,0 +1,59 @@
+package clases;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Formulario {
+	private JFrame formulario;
+	private JLabel lblNombre;
+	private JTextField txtNombre;
+
+	private JLabel lblApellido;
+	private JTextField txtApellido;
+
+	public Formulario(){
+		inicializarFormulario();
+		inicializarComponentes();
+
+		formulario.setVisible(true);
+	}
+
+	public void inicializarFormulario(){
+		formulario = new JFrame("Registro alumnos");
+		formulario.setSize(350,350);
+		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		formulario.setLocationRelativeTo(null);
+		//formulario.setLayout(null);//Se necesita hacer esto para poder utilizar coordenadas
+		formulario.setResizable(false);
+	}
+
+	public void inicializarComponentes(){
+		//Instanciar
+		lblNombre = new JLabel("Nombre:");
+		lblApellido = new JLabel("Apellido:");
+		txtNombre = new JTextField();
+		txtApellido = new JTextField();
+
+		//Ubicar y dar tamaño
+		lblNombre.setBounds(20, 20, 90, 25);
+		txtNombre.setBounds(120, 20, 200, 25);
+		lblApellido.setBounds(20, 50, 90, 25);
+		txtApellido.setBounds(120, 50, 200, 25);
+
+		//Propiedades especiales
+		lblNombre.setHorizontalAlignment(JLabel.RIGHT);
+		lblApellido.setHorizontalAlignment(JLabel.RIGHT);
+
+		//Agregarlos al formulario
+		formulario.add(lblNombre);
+		formulario.add(txtNombre);
+		formulario.add(lblApellido);
+		formulario.add(txtApellido);
+	}
+
+	public static void main(String[] args) {
+		new Formulario();
+	}
+
+}
