@@ -1,13 +1,17 @@
 package clases;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class Formulario {
+public class Formulario implements ActionListener{
 	private JFrame formulario;
 	private JLabel lblNombre;
 	private JLabel lblApellido;
@@ -23,13 +27,13 @@ public class Formulario {
 
 	private JButton btnGuardar;
 	private JButton btnNuevo;
+	private JButton btnSalir;
 
 	private ButtonGroup grupoGenero;
 
 	public Formulario(){
 		inicializarFormulario();
 		inicializarComponentes();
-
 		formulario.setVisible(true);
 	}
 
@@ -54,6 +58,7 @@ public class Formulario {
 		grupoGenero = new ButtonGroup();
 		btnGuardar = new JButton("Guardar");
 		btnNuevo = new JButton("Nuevo");
+		btnSalir = new JButton("Salir");
 
 		rbtFemenino = new JRadioButton("Femenino");
 		rbtMasculino = new JRadioButton("Masculino");
@@ -73,12 +78,29 @@ public class Formulario {
 		rbtMasculino.setBounds(220, 110, 100, 25);
 		btnGuardar.setBounds(20, 150, 100, 25);
 		btnNuevo.setBounds(125, 150, 100, 25);
+		btnSalir.setBounds(230, 150, 100, 25);
 
 		//Propiedades especiales
 		lblNombre.setHorizontalAlignment(JLabel.RIGHT);
 		lblApellido.setHorizontalAlignment(JLabel.RIGHT);
 		lblEdad.setHorizontalAlignment(JLabel.RIGHT);
 		lblGenero.setHorizontalAlignment(JLabel.RIGHT);
+
+		btnGuardar.setMnemonic('G');
+		btnNuevo.setMnemonic('N');
+		btnNuevo.setMnemonic('S');
+		btnGuardar.addActionListener(this);
+		btnNuevo.addActionListener(this);
+		btnSalir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Escribir aqui lo que hara el boton salir
+				System.exit(0);
+			}
+		});
+
+
+
 
 		//Agregarlos al formulario
 		formulario.add(lblNombre);
@@ -92,11 +114,22 @@ public class Formulario {
 		formulario.add(rbtMasculino);
 		formulario.add(btnGuardar);
 		formulario.add(btnNuevo);
+		formulario.add(btnSalir);
 
 	}
 
 	public static void main(String[] args) {
 		new Formulario();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent evento) {
+		if (evento.getActionCommand().equals("Guardar")){
+			JOptionPane.showMessageDialog(
+					formulario, "Nombre: " + txtNombre.getText());
+		} else if (evento.getActionCommand().equals("Nuevo"))
+			JOptionPane.showMessageDialog(formulario, "Nuevo");
+		//JOptionPane.showMessageDialog(formulario, "Se dio click en un boton" + evento.getActionCommand());
 	}
 
 }

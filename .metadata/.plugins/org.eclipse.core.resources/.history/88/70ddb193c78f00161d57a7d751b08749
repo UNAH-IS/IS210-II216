@@ -1,0 +1,9 @@
+package clases;
+
+import interfaces.Humano;
+
+public class Persona implements Abogado{
+
+
+
+}

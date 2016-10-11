@@ -39,6 +39,22 @@ Pilares Programacion Orientada a Objetos
   *Si se define un metodo como abstract, este metodo no tiene cuerpo, solo se declara.
   *Todo metodo abstracto se debe implementar(sobreescribirse) obligatoriamente en las clases hijas.
 
+  Interfaz 
+  Es una estructura de datos similar a una clase. Se declara con la palabra reservada interface. Se les conoce como clases abstractas puras.
+  Caracteristicas:
+  Se utilizan para simular la herencia multiple.
+  Para aplicar herencia con una interfaz se utiliza la palabra reservada implements si la hija es una clase.
+  Para aplicar herencia entre interfaces se utiliza extends.
+  Todos sus metodos deben ser abstractos.
+  Todos sus atributos deben ser public static final.
+  No se puede instanciar una interfaz.
+  Una interfaz no tiene constructor.
+  Los metodos deben ser publicos.
+
+  Usos comunes:
+    Listeners: Oyentes, escuchas que sirven para estar pendientes de cualquier tipo de evento.
+    Librería de constantes.
+    Definir reglas en comun de varias clases.
 
 
 Polimorfismo (Poli: Muchos, morfismo: formas)

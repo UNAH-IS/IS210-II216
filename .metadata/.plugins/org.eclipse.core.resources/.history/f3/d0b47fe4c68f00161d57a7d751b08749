@@ -1,0 +1,10 @@
+package interfaces;
+
+public interface Humano {
+
+	public abstract void respirar();
+	public abstract void morir();
+	public abstract void vivir();
+	public abstract void dormir();
+}
+
