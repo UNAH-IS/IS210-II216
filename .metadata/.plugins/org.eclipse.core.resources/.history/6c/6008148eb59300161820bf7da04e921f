@@ -108,7 +108,7 @@ public class Formulario implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//Escribir aqui lo que hara el boton salir
-				salir();
+				System.exit(0);
 			}
 		});
 
@@ -137,43 +137,20 @@ public class Formulario implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent evento) {
-		if (evento.getActionCommand().equals("Guardar"))
-			agregarRegistro();
-		else if (evento.getActionCommand().equals("Nuevo"))
-			nuevoRegistro();
+		if (evento.getActionCommand().equals("Guardar")){
+			JOptionPane.showMessageDialog(
+					formulario, "Nombre: " + txtNombre.getText());
+		} else if (evento.getActionCommand().equals("Nuevo"))
+			JOptionPane.showMessageDialog(formulario, "Nuevo");
+		//JOptionPane.showMessageDialog(formulario, "Se dio click en un boton" + evento.getActionCommand());
 	}
 
 
 	public void agregarRegistro(){
-		String genero="";
-		if(rbtFemenino.isSelected())
-			genero = "Femenino";
-		else if(rbtFemenino.isSelected())
-			genero = "Masculino";
-		alumnos.add(new Alumno(
-					txtNombre.getText(),
-					txtApellido.getText(),
-					Integer.parseInt(txtEdad.getText()),
-					genero
-				)
-		);
-		mostrarInformacion();
+
 	}
 
 	public void nuevoRegistro(){
-		txtNombre.setText(null);
-		txtApellido.setText(null);
-		txtEdad.setText(null);
-		grupoGenero.clearSelection();
-	}
 
-	public void mostrarInformacion(){
-		txtAInformacion.setText(null);
-		for (int i = 0; i < alumnos.size(); i++) {
-			txtAInformacion.append(alumnos.get(i).toString()+"\n");
-		}
-	}
-	public void salir(){
-		System.exit(0);
 	}
 }

@@ -137,10 +137,12 @@ public class Formulario implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent evento) {
-		if (evento.getActionCommand().equals("Guardar"))
-			agregarRegistro();
-		else if (evento.getActionCommand().equals("Nuevo"))
-			nuevoRegistro();
+		if (evento.getActionCommand().equals("Guardar")){
+			JOptionPane.showMessageDialog(
+					formulario, "Nombre: " + txtNombre.getText());
+		} else if (evento.getActionCommand().equals("Nuevo"))
+			JOptionPane.showMessageDialog(formulario, "Nuevo");
+		//JOptionPane.showMessageDialog(formulario, "Se dio click en un boton" + evento.getActionCommand());
 	}
 
 

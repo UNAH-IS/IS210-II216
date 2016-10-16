@@ -2,7 +2,6 @@ package clases;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -37,9 +36,7 @@ public class Formulario implements ActionListener{
 
 	private ButtonGroup grupoGenero;
 
-	private ArrayList<Alumno> alumnos;
 	public Formulario(){
-		alumnos = new ArrayList<Alumno>();
 		inicializarFormulario();
 		inicializarComponentes();
 		formulario.setVisible(true);
@@ -47,7 +44,7 @@ public class Formulario implements ActionListener{
 
 	public void inicializarFormulario(){
 		formulario = new JFrame("Registro alumnos");
-		formulario.setSize(355,360);
+		formulario.setSize(350,350);
 		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		formulario.setLocationRelativeTo(null);
 		formulario.setLayout(null);//Se necesita hacer esto para poder utilizar coordenadas
@@ -91,7 +88,7 @@ public class Formulario implements ActionListener{
 		btnGuardar.setBounds(20, 150, 100, 25);
 		btnNuevo.setBounds(125, 150, 100, 25);
 		btnSalir.setBounds(230, 150, 100, 25);
-		scrollInformacion.setBounds(10, 190, 330, 130);
+		scrollInformacion.setBounds(10, 160, 250, 130);
 
 		//Propiedades especiales
 		lblNombre.setHorizontalAlignment(JLabel.RIGHT);
@@ -108,7 +105,7 @@ public class Formulario implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//Escribir aqui lo que hara el boton salir
-				salir();
+				System.exit(0);
 			}
 		});
 
@@ -137,43 +134,12 @@ public class Formulario implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent evento) {
-		if (evento.getActionCommand().equals("Guardar"))
-			agregarRegistro();
-		else if (evento.getActionCommand().equals("Nuevo"))
-			nuevoRegistro();
+		if (evento.getActionCommand().equals("Guardar")){
+			JOptionPane.showMessageDialog(
+					formulario, "Nombre: " + txtNombre.getText());
+		} else if (evento.getActionCommand().equals("Nuevo"))
+			JOptionPane.showMessageDialog(formulario, "Nuevo");
+		//JOptionPane.showMessageDialog(formulario, "Se dio click en un boton" + evento.getActionCommand());
 	}
 
-
-	public void agregarRegistro(){
-		String genero="";
-		if(rbtFemenino.isSelected())
-			genero = "Femenino";
-		else if(rbtFemenino.isSelected())
-			genero = "Masculino";
-		alumnos.add(new Alumno(
-					txtNombre.getText(),
-					txtApellido.getText(),
-					Integer.parseInt(txtEdad.getText()),
-					genero
-				)
-		);
-		mostrarInformacion();
-	}
-
-	public void nuevoRegistro(){
-		txtNombre.setText(null);
-		txtApellido.setText(null);
-		txtEdad.setText(null);
-		grupoGenero.clearSelection();
-	}
-
-	public void mostrarInformacion(){
-		txtAInformacion.setText(null);
-		for (int i = 0; i < alumnos.size(); i++) {
-			txtAInformacion.append(alumnos.get(i).toString()+"\n");
-		}
-	}
-	public void salir(){
-		System.exit(0);
-	}
 }

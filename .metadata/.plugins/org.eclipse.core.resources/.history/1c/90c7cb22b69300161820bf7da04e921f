@@ -141,6 +141,7 @@ public class Formulario implements ActionListener{
 			agregarRegistro();
 		else if (evento.getActionCommand().equals("Nuevo"))
 			nuevoRegistro();
+		//JOptionPane.showMessageDialog(formulario, "Se dio click en un boton" + evento.getActionCommand());
 	}
 
 
