@@ -3,9 +3,13 @@ package clases;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,6 +24,8 @@ public class Formulario implements ActionListener{
 	private JLabel lblApellido;
 	private JLabel lblEdad;
 	private JLabel lblGenero;
+	private JLabel lblCarrera;
+	private JLabel lblJornadas;
 
 	private JTextField txtNombre;
 	private JTextField txtApellido;
@@ -31,9 +37,17 @@ public class Formulario implements ActionListener{
 	private JRadioButton rbtFemenino;
 	private JRadioButton rbtMasculino;
 
+	private JCheckBox chkMatutina;
+	private JCheckBox chkVespertina;
+	private JCheckBox chkNocturna;
+
+	private JComboBox<Carrera> cboCarreras;
+
 	private JButton btnGuardar;
 	private JButton btnNuevo;
 	private JButton btnSalir;
+	private JButton btnEliminar;
+	private JButton btnActualizar;
 
 	private ButtonGroup grupoGenero;
 
@@ -47,7 +61,7 @@ public class Formulario implements ActionListener{
 
 	public void inicializarFormulario(){
 		formulario = new JFrame("Registro alumnos");
-		formulario.setSize(355,360);
+		formulario.setSize(355,470);
 		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		formulario.setLocationRelativeTo(null);
 		formulario.setLayout(null);//Se necesita hacer esto para poder utilizar coordenadas
@@ -60,13 +74,19 @@ public class Formulario implements ActionListener{
 		lblApellido = new JLabel("Apellido:");
 		lblEdad = new JLabel("Edad:");
 		lblGenero = new JLabel("Genero:");
+		lblCarrera = new JLabel("Carrera:");
+		lblJornadas  = new JLabel("Jornadas:");
 		txtNombre = new JTextField();
 		txtApellido = new JTextField();
 		txtEdad = new JTextField();
+		cboCarreras = new JComboBox<Carrera>();
 		grupoGenero = new ButtonGroup();
 		btnGuardar = new JButton("Guardar");
 		btnNuevo = new JButton("Nuevo");
 		btnSalir = new JButton("Salir");
+		btnEliminar = new JButton("Eliminar");
+		btnActualizar = new JButton("Actualizar");
+
 
 		txtAInformacion = new JTextArea();
 		scrollInformacion = new JScrollPane();
@@ -74,6 +94,10 @@ public class Formulario implements ActionListener{
 
 		rbtFemenino = new JRadioButton("Femenino");
 		rbtMasculino = new JRadioButton("Masculino");
+
+		chkMatutina = new JCheckBox("Matutina");
+		chkVespertina = new JCheckBox("Vespertina");
+		chkNocturna = new JCheckBox("Nocturna");
 		//Agregar logica para que solo se pueda seleccionar un boton
 		grupoGenero.add(rbtFemenino);
 		grupoGenero.add(rbtMasculino);
@@ -83,27 +107,41 @@ public class Formulario implements ActionListener{
 		lblApellido.setBounds(20, 50, 90, 25);
 		lblEdad.setBounds(20, 80, 90, 25);
 		lblGenero.setBounds(20, 110, 90, 25);
+		lblCarrera.setBounds(20, 140, 90, 25);
+		lblJornadas.setBounds(20, 170, 90, 25);
 		txtNombre.setBounds(120, 20, 200, 25);
 		txtApellido.setBounds(120, 50, 200, 25);
 		txtEdad.setBounds(120, 80, 60, 25);
 		rbtFemenino.setBounds(120, 110, 100, 25);
 		rbtMasculino.setBounds(220, 110, 100, 25);
-		btnGuardar.setBounds(20, 150, 100, 25);
-		btnNuevo.setBounds(125, 150, 100, 25);
-		btnSalir.setBounds(230, 150, 100, 25);
-		scrollInformacion.setBounds(10, 190, 330, 130);
+		cboCarreras.setBounds(120, 140, 200, 25);
+		chkMatutina.setBounds(120, 170, 100, 25);
+		chkVespertina.setBounds(220, 170, 100, 25);
+		chkNocturna.setBounds(120, 190, 100, 25);
+		btnGuardar.setBounds(20, 230, 100, 25);
+		btnNuevo.setBounds(125, 230, 100, 25);
+		btnSalir.setBounds(230, 230, 100, 25);
+		btnActualizar.setBounds(20, 260, 100, 25);
+		btnEliminar.setBounds(125, 260, 100, 25);
+		scrollInformacion.setBounds(10, 290, 330, 130);
 
 		//Propiedades especiales
 		lblNombre.setHorizontalAlignment(JLabel.RIGHT);
 		lblApellido.setHorizontalAlignment(JLabel.RIGHT);
 		lblEdad.setHorizontalAlignment(JLabel.RIGHT);
 		lblGenero.setHorizontalAlignment(JLabel.RIGHT);
+		lblCarrera.setHorizontalAlignment(JLabel.RIGHT);
+		lblJornadas.setHorizontalAlignment(JLabel.RIGHT);
+
+		//Llenar ComboBox de carreras
+		llenarCarreras();
 
 		btnGuardar.setMnemonic('G');
 		btnNuevo.setMnemonic('N');
 		btnNuevo.setMnemonic('S');
 		btnGuardar.addActionListener(this);
 		btnNuevo.addActionListener(this);
+
 		btnSalir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -112,7 +150,19 @@ public class Formulario implements ActionListener{
 			}
 		});
 
+		btnEliminar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				eliminarRegistro();
+			}
+		});
 
+		btnActualizar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				actualizarRegistro();
+			}
+		});
 
 
 		//Agregarlos al formulario
@@ -120,15 +170,31 @@ public class Formulario implements ActionListener{
 		formulario.add(lblApellido);
 		formulario.add(lblEdad);
 		formulario.add(lblGenero);
+		formulario.add(lblCarrera);
+		formulario.add(lblJornadas);
 		formulario.add(txtNombre);
 		formulario.add(txtEdad);
 		formulario.add(txtApellido);
 		formulario.add(rbtFemenino);
 		formulario.add(rbtMasculino);
+		formulario.add(chkMatutina);
+		formulario.add(chkVespertina);
+		formulario.add(chkNocturna);
+		formulario.add(cboCarreras);
 		formulario.add(btnGuardar);
 		formulario.add(btnNuevo);
 		formulario.add(btnSalir);
+		formulario.add(btnEliminar);
+		formulario.add(btnActualizar);
 		formulario.add(scrollInformacion);
+	}
+
+	public void llenarCarreras(){
+		cboCarreras.addItem(new Carrera(1,"Ing Sistemas", 52));
+		cboCarreras.addItem(new Carrera(2,"Ing Quimica", 60));
+		cboCarreras.addItem(new Carrera(3,"Medicina", 45));
+		cboCarreras.addItem(new Carrera(4,"Derecho", 50));
+		cboCarreras.setSelectedItem(null);
 	}
 
 	public static void main(String[] args) {
@@ -137,9 +203,13 @@ public class Formulario implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent evento) {
-		if (evento.getActionCommand().equals("Guardar"))
-			agregarRegistro();
-		else if (evento.getActionCommand().equals("Nuevo"))
+		if (evento.getActionCommand().equals("Guardar")){
+			String errores = validarCampos();
+			if (errores.equals(""))
+				agregarRegistro();
+			else
+				JOptionPane.showMessageDialog(null, errores);
+		}else if (evento.getActionCommand().equals("Nuevo"))
 			nuevoRegistro();
 	}
 
@@ -148,13 +218,28 @@ public class Formulario implements ActionListener{
 		String genero="";
 		if(rbtFemenino.isSelected())
 			genero = "Femenino";
-		else if(rbtFemenino.isSelected())
+		else if(rbtMasculino.isSelected())
 			genero = "Masculino";
+
+
+		ArrayList<String> jornadasSeleccionadas =
+				new ArrayList<String>();
+		if (chkMatutina.isSelected())
+			jornadasSeleccionadas.add(chkMatutina.getText());
+
+		if (chkVespertina.isSelected())
+			jornadasSeleccionadas.add(chkVespertina.getText());
+
+		if (chkNocturna.isSelected())
+			jornadasSeleccionadas.add(chkNocturna.getText());
+
 		alumnos.add(new Alumno(
 					txtNombre.getText(),
 					txtApellido.getText(),
 					Integer.parseInt(txtEdad.getText()),
-					genero
+					genero,
+					(Carrera)cboCarreras.getSelectedItem(),
+					jornadasSeleccionadas
 				)
 		);
 		mostrarInformacion();
@@ -165,6 +250,10 @@ public class Formulario implements ActionListener{
 		txtApellido.setText(null);
 		txtEdad.setText(null);
 		grupoGenero.clearSelection();
+		chkMatutina.setSelected(false);
+		chkVespertina.setSelected(false);
+		chkNocturna.setSelected(false);
+		cboCarreras.setSelectedItem(null);
 	}
 
 	public void mostrarInformacion(){
@@ -173,7 +262,82 @@ public class Formulario implements ActionListener{
 			txtAInformacion.append(alumnos.get(i).toString()+"\n");
 		}
 	}
+
+	public void eliminarRegistro(){
+		int indice = Integer.parseInt(JOptionPane.showInputDialog(
+				"¿Que elemento desea eliminar? (0-"+(alumnos.size()-1)+")"
+		));
+		alumnos.remove(indice);
+		mostrarInformacion();
+	}
+
+	public void actualizarRegistro(){
+		int indice = Integer.parseInt(JOptionPane.showInputDialog(
+				"¿Que elemento desea actualizar? (0-"+(alumnos.size()-1)+")"
+		));
+
+		String genero="";
+		if(rbtFemenino.isSelected())
+			genero = "Femenino";
+		else if(rbtMasculino.isSelected())
+			genero = "Masculino";
+
+
+		ArrayList<String> jornadasSeleccionadas =
+				new ArrayList<String>();
+		if (chkMatutina.isSelected())
+			jornadasSeleccionadas.add(chkMatutina.getText());
+
+		if (chkVespertina.isSelected())
+			jornadasSeleccionadas.add(chkVespertina.getText());
+
+		if (chkNocturna.isSelected())
+			jornadasSeleccionadas.add(chkNocturna.getText());
+
+		alumnos.set(indice,new Alumno(
+					txtNombre.getText(),
+					txtApellido.getText(),
+					Integer.parseInt(txtEdad.getText()),
+					genero,
+					(Carrera)cboCarreras.getSelectedItem(),
+					jornadasSeleccionadas
+				)
+		);
+		mostrarInformacion();
+
+	}
 	public void salir(){
 		System.exit(0);
+	}
+
+	public String validarCampos(){
+		String errores="";
+		if (txtNombre.getText().isEmpty())
+			errores+="El campo nombre esta vacio\n";
+		if (txtApellido.getText().isEmpty())
+			errores+="El campo apellido esta vacio\n";
+		if (txtEdad.getText().isEmpty())
+			errores+="El campo edad esta vacio\n";
+		if (!rbtFemenino.isSelected() && !rbtMasculino.isSelected())
+			errores+="Debe seleccionar un genero\n";
+		if (cboCarreras.getSelectedItem()==null)
+			errores+="Debe seleccionar una carrera\n";
+		if (!chkMatutina.isSelected() && !chkNocturna.isSelected()
+				&& !chkVespertina.isSelected())
+			errores+="Debe seleccionar al menos una jornada\n";
+
+		try{
+			Integer.parseInt(txtEdad.getText());
+		}catch(NumberFormatException exception){
+			errores+="La edad debe ser un numero entero\n";
+		}
+
+
+		Pattern p = Pattern.compile("[0-9]{4}-[0-9]{4}-[0-9]{5}");
+		Matcher m = p.matcher(txtNombre.getText());
+		if(!m.matches())  //m.matches()==false
+			errores+="El campo nombre no cumple con el patron 9999-9999-99999";
+
+		return errores;
 	}
 }

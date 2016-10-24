@@ -1,0 +1,189 @@
+package clases;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class Formulario implements ActionListener{
+	private JFrame formulario;
+	private JLabel lblNombre;
+	private JLabel lblApellido;
+	private JLabel lblEdad;
+	private JLabel lblGenero;
+	private JLabel lblCarrera;
+
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtEdad;
+
+	private JTextArea txtAInformacion;
+	private JScrollPane scrollInformacion;
+
+	private JRadioButton rbtFemenino;
+	private JRadioButton rbtMasculino;
+
+	private JComboBox<Carrera> cboCarreras;
+
+	private JButton btnGuardar;
+	private JButton btnNuevo;
+	private JButton btnSalir;
+
+	private ButtonGroup grupoGenero;
+
+	private ArrayList<Alumno> alumnos;
+	public Formulario(){
+		alumnos = new ArrayList<Alumno>();
+		inicializarFormulario();
+		inicializarComponentes();
+		formulario.setVisible(true);
+	}
+
+	public void inicializarFormulario(){
+		formulario = new JFrame("Registro alumnos");
+		formulario.setSize(355,360);
+		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		formulario.setLocationRelativeTo(null);
+		formulario.setLayout(null);//Se necesita hacer esto para poder utilizar coordenadas
+		formulario.setResizable(false);
+	}
+
+	public void inicializarComponentes(){
+		//Instanciar
+		lblNombre = new JLabel("Nombre:");
+		lblApellido = new JLabel("Apellido:");
+		lblEdad = new JLabel("Edad:");
+		lblGenero = new JLabel("Genero:");
+		lblCarrera = new JLabel("Carrera:");
+		txtNombre = new JTextField();
+		txtApellido = new JTextField();
+		txtEdad = new JTextField();
+		cboCarreras = new JComboBox<Carrera>();
+		grupoGenero = new ButtonGroup();
+		btnGuardar = new JButton("Guardar");
+		btnNuevo = new JButton("Nuevo");
+		btnSalir = new JButton("Salir");
+
+		txtAInformacion = new JTextArea();
+		scrollInformacion = new JScrollPane();
+		scrollInformacion.setViewportView(txtAInformacion);
+
+		rbtFemenino = new JRadioButton("Femenino");
+		rbtMasculino = new JRadioButton("Masculino");
+		//Agregar logica para que solo se pueda seleccionar un boton
+		grupoGenero.add(rbtFemenino);
+		grupoGenero.add(rbtMasculino);
+
+		//Ubicar y dar tamaño
+		lblNombre.setBounds(20, 20, 90, 25);
+		lblApellido.setBounds(20, 50, 90, 25);
+		lblEdad.setBounds(20, 80, 90, 25);
+		lblGenero.setBounds(20, 110, 90, 25);
+		lblCarrera.setBounds(20, 140, 90, 25);
+		txtNombre.setBounds(120, 20, 200, 25);
+		txtApellido.setBounds(120, 50, 200, 25);
+		txtEdad.setBounds(120, 80, 60, 25);
+		rbtFemenino.setBounds(120, 110, 100, 25);
+		rbtMasculino.setBounds(220, 110, 100, 25);
+		cboCarreras.setBounds(120, 140, 200, 25);
+		btnGuardar.setBounds(20, 180, 100, 25);
+		btnNuevo.setBounds(125, 180, 100, 25);
+		btnSalir.setBounds(230, 180, 100, 25);
+		scrollInformacion.setBounds(10, 210, 330, 130);
+
+		//Propiedades especiales
+		lblNombre.setHorizontalAlignment(JLabel.RIGHT);
+		lblApellido.setHorizontalAlignment(JLabel.RIGHT);
+		lblEdad.setHorizontalAlignment(JLabel.RIGHT);
+		lblGenero.setHorizontalAlignment(JLabel.RIGHT);
+
+		btnGuardar.setMnemonic('G');
+		btnNuevo.setMnemonic('N');
+		btnNuevo.setMnemonic('S');
+		btnGuardar.addActionListener(this);
+		btnNuevo.addActionListener(this);
+		btnSalir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Escribir aqui lo que hara el boton salir
+				salir();
+			}
+		});
+
+
+
+
+		//Agregarlos al formulario
+		formulario.add(lblNombre);
+		formulario.add(lblApellido);
+		formulario.add(lblEdad);
+		formulario.add(lblGenero);
+		formulario.add(txtNombre);
+		formulario.add(txtEdad);
+		formulario.add(txtApellido);
+		formulario.add(rbtFemenino);
+		formulario.add(rbtMasculino);
+		formulario.add(cboCarreras);
+		formulario.add(btnGuardar);
+		formulario.add(btnNuevo);
+		formulario.add(btnSalir);
+		formulario.add(scrollInformacion);
+	}
+
+	public static void main(String[] args) {
+		new Formulario();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent evento) {
+		if (evento.getActionCommand().equals("Guardar"))
+			agregarRegistro();
+		else if (evento.getActionCommand().equals("Nuevo"))
+			nuevoRegistro();
+	}
+
+
+	public void agregarRegistro(){
+		String genero="";
+		if(rbtFemenino.isSelected())
+			genero = "Femenino";
+		else if(rbtFemenino.isSelected())
+			genero = "Masculino";
+		alumnos.add(new Alumno(
+					txtNombre.getText(),
+					txtApellido.getText(),
+					Integer.parseInt(txtEdad.getText()),
+					genero,
+					null, null
+				)
+		);
+		mostrarInformacion();
+	}
+
+	public void nuevoRegistro(){
+		txtNombre.setText(null);
+		txtApellido.setText(null);
+		txtEdad.setText(null);
+		grupoGenero.clearSelection();
+	}
+
+	public void mostrarInformacion(){
+		txtAInformacion.setText(null);
+		for (int i = 0; i < alumnos.size(); i++) {
+			txtAInformacion.append(alumnos.get(i).toString()+"\n");
+		}
+	}
+	public void salir(){
+		System.exit(0);
+	}
+}

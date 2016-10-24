@@ -1,0 +1,247 @@
+package clases;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class Formulario implements ActionListener{
+	private JFrame formulario;
+	private JLabel lblNombre;
+	private JLabel lblApellido;
+	private JLabel lblEdad;
+	private JLabel lblGenero;
+	private JLabel lblCarrera;
+	private JLabel lblJornadas;
+
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtEdad;
+
+	private JTextArea txtAInformacion;
+	private JScrollPane scrollInformacion;
+
+	private JRadioButton rbtFemenino;
+	private JRadioButton rbtMasculino;
+
+	private JCheckBox chkMatutina;
+	private JCheckBox chkVespertina;
+	private JCheckBox chkNocturna;
+
+	private JComboBox<Carrera> cboCarreras;
+
+	private JButton btnGuardar;
+	private JButton btnNuevo;
+	private JButton btnSalir;
+	private JButton btnEliminar;
+	private JButton btnActualizar;
+
+	private ButtonGroup grupoGenero;
+
+	private ArrayList<Alumno> alumnos;
+	public Formulario(){
+		alumnos = new ArrayList<Alumno>();
+		inicializarFormulario();
+		inicializarComponentes();
+		formulario.setVisible(true);
+	}
+
+	public void inicializarFormulario(){
+		formulario = new JFrame("Registro alumnos");
+		formulario.setSize(355,470);
+		formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		formulario.setLocationRelativeTo(null);
+		formulario.setLayout(null);//Se necesita hacer esto para poder utilizar coordenadas
+		formulario.setResizable(false);
+	}
+
+	public void inicializarComponentes(){
+		//Instanciar
+		lblNombre = new JLabel("Nombre:");
+		lblApellido = new JLabel("Apellido:");
+		lblEdad = new JLabel("Edad:");
+		lblGenero = new JLabel("Genero:");
+		lblCarrera = new JLabel("Carrera:");
+		lblJornadas  = new JLabel("Jornadas:");
+		txtNombre = new JTextField();
+		txtApellido = new JTextField();
+		txtEdad = new JTextField();
+		cboCarreras = new JComboBox<Carrera>();
+		grupoGenero = new ButtonGroup();
+		btnGuardar = new JButton("Guardar");
+		btnNuevo = new JButton("Nuevo");
+		btnSalir = new JButton("Salir");
+		btnEliminar = new JButton("Eliminar");
+		btnActualizar = new JButton("Actualizar");
+
+
+		txtAInformacion = new JTextArea();
+		scrollInformacion = new JScrollPane();
+		scrollInformacion.setViewportView(txtAInformacion);
+
+		rbtFemenino = new JRadioButton("Femenino");
+		rbtMasculino = new JRadioButton("Masculino");
+
+		chkMatutina = new JCheckBox("Matutina");
+		chkVespertina = new JCheckBox("Vespertina");
+		chkNocturna = new JCheckBox("Nocturna");
+		//Agregar logica para que solo se pueda seleccionar un boton
+		grupoGenero.add(rbtFemenino);
+		grupoGenero.add(rbtMasculino);
+
+		//Ubicar y dar tamaño
+		lblNombre.setBounds(20, 20, 90, 25);
+		lblApellido.setBounds(20, 50, 90, 25);
+		lblEdad.setBounds(20, 80, 90, 25);
+		lblGenero.setBounds(20, 110, 90, 25);
+		lblCarrera.setBounds(20, 140, 90, 25);
+		lblJornadas.setBounds(20, 170, 90, 25);
+		txtNombre.setBounds(120, 20, 200, 25);
+		txtApellido.setBounds(120, 50, 200, 25);
+		txtEdad.setBounds(120, 80, 60, 25);
+		rbtFemenino.setBounds(120, 110, 100, 25);
+		rbtMasculino.setBounds(220, 110, 100, 25);
+		cboCarreras.setBounds(120, 140, 200, 25);
+		chkMatutina.setBounds(120, 170, 100, 25);
+		chkVespertina.setBounds(220, 170, 100, 25);
+		chkNocturna.setBounds(120, 190, 100, 25);
+		btnGuardar.setBounds(20, 230, 100, 25);
+		btnNuevo.setBounds(125, 230, 100, 25);
+		btnSalir.setBounds(230, 230, 100, 25);
+		btnActualizar.setBounds(20, 260, 100, 25);
+		btnEliminar.setBounds(125, 260, 100, 25);
+		scrollInformacion.setBounds(10, 290, 330, 130);
+
+		//Propiedades especiales
+		lblNombre.setHorizontalAlignment(JLabel.RIGHT);
+		lblApellido.setHorizontalAlignment(JLabel.RIGHT);
+		lblEdad.setHorizontalAlignment(JLabel.RIGHT);
+		lblGenero.setHorizontalAlignment(JLabel.RIGHT);
+		lblCarrera.setHorizontalAlignment(JLabel.RIGHT);
+		lblJornadas.setHorizontalAlignment(JLabel.RIGHT);
+
+		//Llenar ComboBox de carreras
+		llenarCarreras();
+
+		btnGuardar.setMnemonic('G');
+		btnNuevo.setMnemonic('N');
+		btnNuevo.setMnemonic('S');
+		btnGuardar.addActionListener(this);
+		btnNuevo.addActionListener(this);
+		btnSalir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Escribir aqui lo que hara el boton salir
+				salir();
+			}
+		});
+
+
+
+
+		//Agregarlos al formulario
+		formulario.add(lblNombre);
+		formulario.add(lblApellido);
+		formulario.add(lblEdad);
+		formulario.add(lblGenero);
+		formulario.add(lblCarrera);
+		formulario.add(lblJornadas);
+		formulario.add(txtNombre);
+		formulario.add(txtEdad);
+		formulario.add(txtApellido);
+		formulario.add(rbtFemenino);
+		formulario.add(rbtMasculino);
+		formulario.add(chkMatutina);
+		formulario.add(chkVespertina);
+		formulario.add(chkNocturna);
+		formulario.add(cboCarreras);
+		formulario.add(btnGuardar);
+		formulario.add(btnNuevo);
+		formulario.add(btnSalir);
+		formulario.add(scrollInformacion);
+	}
+
+	public void llenarCarreras(){
+		cboCarreras.addItem(new Carrera(1,"Ing Sistemas", 52));
+		cboCarreras.addItem(new Carrera(2,"Ing Quimica", 60));
+		cboCarreras.addItem(new Carrera(3,"Medicina", 45));
+		cboCarreras.addItem(new Carrera(4,"Derecho", 50));
+		cboCarreras.setSelectedItem(null);
+	}
+
+	public static void main(String[] args) {
+		new Formulario();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent evento) {
+		if (evento.getActionCommand().equals("Guardar"))
+			agregarRegistro();
+		else if (evento.getActionCommand().equals("Nuevo"))
+			nuevoRegistro();
+	}
+
+
+	public void agregarRegistro(){
+		String genero="";
+		if(rbtFemenino.isSelected())
+			genero = "Femenino";
+		else if(rbtMasculino.isSelected())
+			genero = "Masculino";
+
+
+		ArrayList<String> jornadasSeleccionadas =
+				new ArrayList<String>();
+		if (chkMatutina.isSelected())
+			jornadasSeleccionadas.add(chkMatutina.getText());
+
+		if (chkVespertina.isSelected())
+			jornadasSeleccionadas.add(chkVespertina.getText());
+
+		if (chkNocturna.isSelected())
+			jornadasSeleccionadas.add(chkNocturna.getText());
+
+		alumnos.add(new Alumno(
+					txtNombre.getText(),
+					txtApellido.getText(),
+					Integer.parseInt(txtEdad.getText()),
+					genero,
+					(Carrera)cboCarreras.getSelectedItem(),
+					jornadasSeleccionadas
+				)
+		);
+		mostrarInformacion();
+	}
+
+	public void nuevoRegistro(){
+		txtNombre.setText(null);
+		txtApellido.setText(null);
+		txtEdad.setText(null);
+		grupoGenero.clearSelection();
+		chkMatutina.setSelected(false);
+		chkVespertina.setSelected(false);
+		chkNocturna.setSelected(false);
+		cboCarreras.setSelectedItem(null);
+	}
+
+	public void mostrarInformacion(){
+		txtAInformacion.setText(null);
+		for (int i = 0; i < alumnos.size(); i++) {
+			txtAInformacion.append(alumnos.get(i).toString()+"\n");
+		}
+	}
+	public void salir(){
+		System.exit(0);
+	}
+}
