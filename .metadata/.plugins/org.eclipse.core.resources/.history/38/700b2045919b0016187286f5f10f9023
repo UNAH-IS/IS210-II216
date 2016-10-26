@@ -1,0 +1,50 @@
+package formularios;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class FormularioPrincipal extends JFrame {
+
+	private JDesktopPane contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FormularioPrincipal frame = new FormularioPrincipal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public FormularioPrincipal() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JDesktopPane();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JInternalFrame internalFrame = new JInternalFrame("Agregar producto");
+		internalFrame.setMaximizable(true);
+		internalFrame.setIconifiable(true);
+		internalFrame.setClosable(true);
+		internalFrame.setBounds(29, 30, 258, 187);
+		contentPane.add(internalFrame);
+		internalFrame.setVisible(true);
+	}
+}

@@ -1,0 +1,73 @@
+package formularios;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+public class FormularioPrincipal extends JFrame {
+
+	private JDesktopPane contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FormularioPrincipal frame = new FormularioPrincipal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public FormularioPrincipal() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 596, 469);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnOperaciones = new JMenu("Operaciones");
+		menuBar.add(mnOperaciones);
+		
+		JMenuItem mntmGestionarCategorias = new JMenuItem("Gestionar categorias");
+		mnOperaciones.add(mntmGestionarCategorias);
+		
+		JMenuItem mntmGestionarProductos = new JMenuItem("Gestionar productos");
+		mnOperaciones.add(mntmGestionarProductos);
+		contentPane = new JDesktopPane();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JInternalFrame internalFrame = new JInternalFrame("Gestion de productos");
+		internalFrame.setMaximizable(true);
+		internalFrame.setIconifiable(true);
+		internalFrame.setClosable(true);
+		internalFrame.setBounds(10, 11, 258, 187);
+		contentPane.add(internalFrame);
+		
+		JInternalFrame internalFrame_1 = new JInternalFrame("Gestion de categorias");
+		internalFrame_1.setClosable(true);
+		internalFrame_1.setIconifiable(true);
+		internalFrame_1.setMaximizable(true);
+		internalFrame_1.setBounds(300, 37, 245, 187);
+		contentPane.add(internalFrame_1);
+		internalFrame_1.setVisible(true);
+		internalFrame.setVisible(true);
+	}
+}

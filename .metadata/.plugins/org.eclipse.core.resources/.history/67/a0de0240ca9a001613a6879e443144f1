@@ -1,0 +1,91 @@
+package formularios;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+public class FormularioPrincipal extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtNombre;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+
+					FormularioPrincipal frame = new FormularioPrincipal();
+					frame.setVisible(true);
+
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public FormularioPrincipal() {
+		setTitle("Formulario de prueba");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnArchivo = new JMenu("Archivo");
+		menuBar.add(mnArchivo);
+		
+		JMenuItem mntmAbrir = new JMenuItem("Abrir");
+		mnArchivo.add(mntmAbrir);
+		
+		JMenuItem mntmGuardar = new JMenuItem("Guardar");
+		mnArchivo.add(mntmGuardar);
+		
+		JMenu mnArchivosRecientes = new JMenu("Archivos recientes");
+		mnArchivo.add(mnArchivosRecientes);
+		
+		JMenuItem mntmArchivotxt = new JMenuItem("Archivo1.txt");
+		mnArchivosRecientes.add(mntmArchivotxt);
+		
+		JMenuItem mntmArchivotxt_1 = new JMenuItem("Archivo2.txt");
+		mnArchivosRecientes.add(mntmArchivotxt_1);
+		
+		JMenu mnEdicion = new JMenu("Edicion");
+		menuBar.add(mnEdicion);
+		
+		JMenuItem mntmCopiar = new JMenuItem("Copiar");
+		mnEdicion.add(mntmCopiar);
+		
+		JMenuItem mntmPegar = new JMenuItem("Pegar");
+		mnEdicion.add(mntmPegar);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JButton btnClickAqui = new JButton("Click aqui");
+		btnClickAqui.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Hola " + txtNombre.getText());
+			}
+		});
+		btnClickAqui.setToolTipText("Haga click aqui para mostrar un mensaje");
+		btnClickAqui.setMnemonic('C');
+		btnClickAqui.setBounds(267, 90, 89, 23);
+		contentPane.add(btnClickAqui);
+
+		txtNombre = new JTextField();
+		txtNombre.setBounds(27, 91, 230, 20);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
+	}
+}
