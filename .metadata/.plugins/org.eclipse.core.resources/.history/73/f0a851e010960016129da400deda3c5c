@@ -1,9 +1,0 @@
-package clases;
-
-public class Carrera {
-	private int codigoCarrera;
-	private String nombreCarrera;
-	private int cantidadClases;
-
-
-}
