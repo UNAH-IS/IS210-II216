@@ -10,6 +10,9 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
+		primaryStage.setTitle("Formulario registro Telefonos");
+		//primaryStage.setFullScreen(true);
+		//primaryStage.setOpacity(0.9);
 		try {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("VistaRegistroTelefonos.fxml"));
 			Scene scene = new Scene(root);

@@ -1,0 +1,39 @@
+package application;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import clases.Marca;
+import clases.Modelo;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+
+public class ControladoRegistroTelefonos implements Initializable{
+	@FXML private ComboBox<Marca> cboMarcas;
+	@FXML private ComboBox<Modelo> cboModelos;
+
+	private ObservableList<Marca> marcas;
+	private ObservableList<Modelo> modelos;
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		marcas = FXCollections.observableArrayList();
+		modelos = FXCollections.observableArrayList();
+
+		marcas.add(new Marca(1,"Samsung"));
+		marcas.add(new Marca(2,"iPhone"));
+		marcas.add(new Marca(3,"Chino"));
+
+		modelos.add(new Modelo(1,"S7"));
+		modelos.add(new Modelo(2,"7S"));
+		modelos.add(new Modelo(2,"Z7"));
+		cboMarcas.setItems(marcas);
+		//En este punto se sabe que todos los elementos de la GUI estan instanciados
+		//cboMarcas.setDisable(true);
+	}
+
+
+}

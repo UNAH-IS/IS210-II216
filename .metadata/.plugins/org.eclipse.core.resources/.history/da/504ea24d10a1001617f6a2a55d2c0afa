@@ -1,0 +1,10 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+
+public class ControladoRegistroTelefonos {
+	@FXML private ComboBox cboMarcas;
+
+
+}

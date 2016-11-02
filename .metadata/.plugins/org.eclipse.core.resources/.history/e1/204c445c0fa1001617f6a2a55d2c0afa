@@ -1,0 +1,9 @@
+package clases;
+
+public class Color {
+	private int codigoColor;
+	private String nombreColor;
+	private Color color;
+
+
+}

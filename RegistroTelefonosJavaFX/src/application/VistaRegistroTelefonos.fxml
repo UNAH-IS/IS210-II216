@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="408.0" prefWidth="468.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.ControladoRegistroTelefonos">
+<AnchorPane prefHeight="408.0" prefWidth="468.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladoRegistroTelefonos">
    <children>
       <GridPane layoutX="23.0" layoutY="9.0" prefHeight="173.0" prefWidth="422.0">
         <columnConstraints>
@@ -53,30 +52,33 @@
                   <Insets right="5.0" />
                </padding>
             </Label>
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="cboMarcas" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="cboModelos" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtNumeroTelefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cboColores" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <RadioButton mnemonicParsing="false" text="Tigo" />
-                  <RadioButton mnemonicParsing="false" text="Claro" />
+                  <RadioButton fx:id="rbtTigo" mnemonicParsing="false" text="Tigo">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="operador" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="rbtClaro" mnemonicParsing="false" text="Claro" toggleGroup="$operador" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="7.0" right="5.0" top="7.0" />
                </padding>
             </HBox>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="txtNombreCliente" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox layoutX="14.0" layoutY="189.0" prefHeight="29.0" prefWidth="442.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" text="Guardar" />
+            <Button mnemonicParsing="false" onAction="#agregarRegistro" text="Guardar" />
             <Button mnemonicParsing="false" text="Actualizar" />
             <Button mnemonicParsing="false" text="Eliminar" />
             <Button mnemonicParsing="false" text="Nuevo" />
          </children>
       </HBox>
-      <TextArea layoutX="7.0" layoutY="220.0" prefHeight="182.0" prefWidth="449.0" />
+      <TextArea fx:id="txtaInformacion" layoutX="7.0" layoutY="220.0" prefHeight="182.0" prefWidth="449.0" />
    </children>
 </AnchorPane>
