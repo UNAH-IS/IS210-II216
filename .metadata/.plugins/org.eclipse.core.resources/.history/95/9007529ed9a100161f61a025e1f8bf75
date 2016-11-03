@@ -1,0 +1,10 @@
+package clases;
+
+public class EjemploClaseFile {
+	public EjemploClaseFile(){
+
+	}
+	public static void main(String args[]){
+		new EjemploClaseFile();
+	}
+}

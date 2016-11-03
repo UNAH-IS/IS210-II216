@@ -1,0 +1,22 @@
+package clases;
+
+import java.io.File; //Input-Output
+
+public class EjemploClaseFile {
+	private File archivo;
+	public EjemploClaseFile(){
+		archivo = new File("C:\\Prueba\\HolaMundoNOEXISTE.java");
+		if(archivo.exists()){
+			System.out.println("El archivo si existe");
+			System.out.println(archivo.getName());
+			System.out.println(archivo.getPath());
+
+		}else{
+			System.out.println("El archivo NO existe");
+			System.out.println(archivo.createNewFile());
+		}
+	}
+	public static void main(String args[]){
+		new EjemploClaseFile();
+	}
+}
