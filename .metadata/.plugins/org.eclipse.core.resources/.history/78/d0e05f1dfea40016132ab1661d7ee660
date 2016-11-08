@@ -1,0 +1,10 @@
+package clases;
+
+public class EjemploFileWriter {
+	public EjemploFileWriter(){
+
+	}
+	public static void main(String args[]){
+		new EjemploFileWriter();
+	}
+}

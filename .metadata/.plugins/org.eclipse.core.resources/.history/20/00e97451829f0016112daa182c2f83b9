@@ -1,9 +1,0 @@
-package application;
-
-public class Controlodor {
-
-
-	public void accionBotonIngresar(){
-		System.out.println("Hola mundo");
-	}
-}

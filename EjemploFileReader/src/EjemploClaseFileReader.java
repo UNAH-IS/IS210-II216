@@ -11,11 +11,11 @@ public class EjemploClaseFileReader {
 		try {
 			flujoLectura = new FileReader("C:/Prueba/HolaMundo.java");
 			flujoLecturaMejorado = new BufferedReader(flujoLectura);
-			linea = flujoLecturaMejorado.readLine();
-			while (linea!=null){
-				System.out.println(linea);
+			do{
 				linea = flujoLecturaMejorado.readLine();
-			}
+				if (linea!=null) System.out.println(linea);
+			}while (linea!=null);
+			flujoLectura.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
