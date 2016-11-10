@@ -9,6 +9,7 @@ import juego.Juego;
 
 public class Jugador {
 	private String nombreJugador;
+	private int cantidadItemsRecolectados;
 	private int x;
 	private int y;
 	private int velocidad;
@@ -69,13 +70,13 @@ public class Jugador {
 
 	public void pintar(Graphics2D g2D, ImageObserver observer){
 		g2D.setColor(Color.RED);
-		g2D.drawRect(x,y,anchoImagen, altoImagen);
+		g2D.drawRect(x+10,y+10,anchoImagen-25, altoImagen-20);
 		g2D.drawImage(Juego.imagenes.get(this.llaveImagen), x, y, observer);
 
 	}
 
 	public Rectangle obtenerRectangulo(){
-		return new Rectangle(x,y,anchoImagen, altoImagen);
+		return new Rectangle(x+10,y+10,anchoImagen-25, altoImagen-20);
 	}
 
 	public void mover(){
@@ -90,6 +91,16 @@ public class Jugador {
 
 		if(Juego.presionoAbajo)
 			y+=velocidad;
+	}
+	public int getCantidadItemsRecolectados() {
+		return cantidadItemsRecolectados;
+	}
+	public void setCantidadItemsRecolectados(int cantidadItemsRecolectados) {
+		this.cantidadItemsRecolectados = cantidadItemsRecolectados;
+	}
+
+	public void agregarItem(){
+		cantidadItemsRecolectados++;
 	}
 }
 

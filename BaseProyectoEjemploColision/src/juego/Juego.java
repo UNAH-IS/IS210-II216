@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -31,6 +32,7 @@ public class Juego extends Canvas implements KeyListener{
 	int fps; //Fotogramas por segundo
 
 	private Item item;
+	private ArrayList<Item> items;
 	private int tileMap[][]={
 			{0 , 0 , 0 ,0 , 0 ,0, 0},
 			{0 , 0 , 0 ,0 , 0 ,0, 0},
@@ -60,6 +62,7 @@ public class Juego extends Canvas implements KeyListener{
 	public static HashMap<String,BufferedImage> imagenes = new HashMap<String,BufferedImage>();
 
 	public Juego(){
+		items = new ArrayList<Item>();
 		cargarImagenes();
 		inicializarObjetosJuego();
 		incializarVentana();
@@ -92,12 +95,39 @@ public class Juego extends Canvas implements KeyListener{
 
 	public void inicializarObjetosJuego(){
 		jugador = new Jugador("Mario",10,10,2,"mario");
+
 		item = new Item(100,200,0,"tile17");
+		items.add(new Item(200,200,0,"tile17"));
+		items.add(new Item(300,200,0,"tile16"));
+		items.add(new Item(400,200,0,"tile17"));
+		items.add(new Item(500,200,0,"tile17"));
 	}
 
 	public void verificarColisiones(){
-		if(jugador.obtenerRectangulo().intersects(item.obtenerRectangulo()))
+		if(jugador.obtenerRectangulo().intersects(item.obtenerRectangulo())
+				&& item.isActivo()){
 			System.out.println("Existe una colision");
+			item.gestionarColision();
+			jugador.agregarItem();
+		}
+
+		for(int i =0; i<items.size();i++){
+			if(jugador.obtenerRectangulo().intersects(items.get(i).obtenerRectangulo())){
+				items.get(i).gestionarColision();
+				jugador.agregarItem();
+			}
+		}
+
+	}
+
+	public void limpiarMemoria(){
+		//System.out.println("Cantidad de items disponible: " + items.size());
+		for(int i =0;i<items.size();i++){
+			if(!items.get(i).isActivo()){
+				items.set(i, null);
+				items.remove(i);
+			}
+		}
 	}
 
 	//Cargar Imagenes
@@ -167,7 +197,19 @@ public class Juego extends Canvas implements KeyListener{
 
 
         jugador.pintar(g2D, this);
-        item.pintar(g2D, this);
+        if (item.isActivo())
+        	item.pintar(g2D, this);
+
+        for (int i =0;i<items.size();i++){
+        	if (items.get(i).isActivo())
+        		items.get(i).pintar(g2D, this);
+        }
+
+        //Pintar indicadores
+        g2D.setColor(new Color(0,0,0));
+        g2D.drawString("Items: " + jugador.getCantidadItemsRecolectados(), 20, 50);
+
+
         dobleBuffer.show(); //Mostrar lo que se ha dibujado
 	}
 
@@ -201,7 +243,7 @@ public class Juego extends Canvas implements KeyListener{
     	   pintar();
     	   actualizar();
     	   verificarColisiones();
-
+    	   limpiarMemoria();
     	   //Aplicar la pausa.
     	   try{Thread.sleep((lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );} //Puede sustituir el valor de la pausa por un valor fijo
     	   catch(Exception e){};

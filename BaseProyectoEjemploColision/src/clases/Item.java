@@ -14,6 +14,7 @@ public class Item {
 	private int anchoImagen;
 	private int altoImagen;
 	private String llaveImagen;
+	private boolean activo=true;
 	public Item(int x, int y, int velocidad, String llaveImagen) {
 		this.x = x;
 		this.y = y;
@@ -62,14 +63,27 @@ public class Item {
 
 	public void pintar(Graphics2D g2D, ImageObserver observer){
 		g2D.setColor(Color.RED);
-		g2D.drawRect(x,y,anchoImagen, altoImagen);
+		g2D.drawRect(x+20,y+5,anchoImagen-40, altoImagen-10);
 		g2D.drawImage(Juego.imagenes.get(this.llaveImagen), x, y, observer);
 	}
 
 	public Rectangle obtenerRectangulo(){
-		return new Rectangle(x,y,anchoImagen, altoImagen);
+		return new Rectangle(x+20,y+5,anchoImagen-40, altoImagen-10);
 	}
 	public void mover(){
 
+	}
+
+	public void gestionarColision(){
+		activo = false;
+		///
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 }
