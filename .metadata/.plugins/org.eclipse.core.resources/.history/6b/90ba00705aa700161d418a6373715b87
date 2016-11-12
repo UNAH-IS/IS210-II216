@@ -1,0 +1,19 @@
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class EjemploFileInputStream {
+	private BufferedInputStream flujoLectura;
+	public EjemploFileInputStream(){
+		try {
+			flujoLectura = new BufferedInputStream(new FileInputStream("C:/Prueba/HolaMundo.java"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		new EjemploFileInputStream();
+	}
+
+}

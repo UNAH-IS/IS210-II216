@@ -1,0 +1,23 @@
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+public class EjemploFileOutputStream {
+	private BufferedOutputStream flujoEscritura;
+	public EjemploFileOutputStream(){
+		try {
+			flujoEscritura =
+					new BufferedOutputStream(new FileOutputStream("prueba.txt"));
+			String mensaje = "Hola mundo";
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void main(String[] args) {
+		new EjemploFileOutputStream();
+	}
+
+}
